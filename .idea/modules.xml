@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/dubbo-tingyun.iml" filepath="$PROJECT_DIR$/dubbo-tingyun.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo-tingyun-api/dubbo-tingyun-api.iml" filepath="$PROJECT_DIR$/dubbo-tingyun-api/dubbo-tingyun-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo-tingyun-consumer1/dubbo-tingyun-consumer1.iml" filepath="$PROJECT_DIR$/dubbo-tingyun-consumer1/dubbo-tingyun-consumer1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo-tingyun-provider/dubbo-tingyun-provider.iml" filepath="$PROJECT_DIR$/dubbo-tingyun-provider/dubbo-tingyun-provider.iml" />
+    </modules>
+  </component>
+</project>

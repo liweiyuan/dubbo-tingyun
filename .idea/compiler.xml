@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="dubbo-tingyun-api" />
+        <module name="dubbo-tingyun-consumer1" />
+        <module name="dubbo-tingyun-provider" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="1.8">
+      <module name="dubbo-tingyun" target="1.5" />
+      <module name="dubbo-tingyun-api" target="1.5" />
+      <module name="dubbo-tingyun-consumer" target="1.8" />
+      <module name="dubbo-tingyun-consumer1" target="1.5" />
+      <module name="dubbo-tingyun-provider" target="1.6" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
