@@ -78,4 +78,13 @@
     <bean id="rmiBean" class="com.wade.dubbo.provider.rmi.RmiServiceImpl"/>
     <dubbo:service id="rmiService" interface="com.wade.dubbo.demo.RmiService" version="4.0.0" ref="rmiBean"
                    async="false" retries="3" timeout="120000" loadbalance="random" protocol="rmi"/>
+
+    <!--dubbo协议，配置method与argument-->
+    <bean id="dubboBean" class="com.wade.dubbo.provider.dubbo.DubboServiceImpl"/>
+    <dubbo:service interface="com.wade.dubbo.demo.DubboService" id="dubboService" ref="dubboBean" version="5.0.0"
+                   async="true" protocol="dubbo" timeout="120000" loadbalance="random">
+        <dubbo:method name="helloDubbo" loadbalance="random" async="true" retries="2" timeout="10000" return="true">
+            <dubbo:argument index="0"/>
+        </dubbo:method>
+    </dubbo:service>
 </beans>

@@ -72,6 +72,11 @@
     <!--<dubbo:reference id="memcachedService" interface="com.wade.dubbo.demo.MemcachedService"
                      url="memcached://10.128.0.40:11211"  p:set="setNumber"/>-->
     <!--基于redis的协议-->
-   <!-- <dubbo:reference id="redisService" interface="com.wade.dubbo.demo.RedisService" url="redis://10.128.0.40:6369"
-                     p:set="setNumber"/>--><!--p:set="putFoo" p:get="getFoo" p:delete="removeFoo"-->
+    <!-- <dubbo:reference id="redisService" interface="com.wade.dubbo.demo.RedisService" url="redis://10.128.0.40:6369"
+                      p:set="setNumber"/>--><!--p:set="putFoo" p:get="getFoo" p:delete="removeFoo"-->
+
+    <!--配置method参数-->
+    <dubbo:reference interface="com.wade.dubbo.demo.DubboService" id="dubboService" timeout="150000" retries="4"
+                     async="true" protocol="dubbo" loadbalance="random" version="5.0.0">
+    </dubbo:reference>
 </beans>
