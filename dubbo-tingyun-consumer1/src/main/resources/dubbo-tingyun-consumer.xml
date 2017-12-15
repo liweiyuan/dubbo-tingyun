@@ -44,7 +44,7 @@
     <dubbo:reference id="demoService" version="0.0.0" interface="com.wade.dubbo.demo.DemoService" timeout="150000"
                      loadbalance="roundrobin" protocol="dubbo" retries="4" check="true"
                      async="true"/>  <!--cache 缓存设置 cache="lru"(测试先取消)  protocol="dubbo"  client="netty"-->
-    <dubbo:annotation package="com.wade.consumer.service"/>
+    <dubbo:annotation package="com.wade.consumer"/>
 
     <dubbo:reference id="thriftService" interface="com.wade.dubbo.service.thrift.Demo$Iface" timeout="1000000"
                      protocol="thrift" cache="lru"/>
@@ -81,5 +81,9 @@
     </dubbo:reference>
 
     <!--callback-->
-    <dubbo:reference interface="com.wade.dubbo.demo.callback.CallbackService" id="callbackService"/>
+    <dubbo:reference interface="com.wade.dubbo.demo.callback.CallbackService" id="callbackService" protocol="dubbo"/>
+
+    <dubbo:reference id="heartService" interface="com.wade.dubbo.demo.heart.HeartService" url="dubbo://127.0.0.1:20880">
+        <dubbo:parameter key="heartbeat" value="3000"/>
+    </dubbo:reference>
 </beans>

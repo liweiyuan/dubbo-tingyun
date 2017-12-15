@@ -97,4 +97,12 @@
             <!--<dubbo:argument type="com.demo.CallbackListener" callback="true" />-->
         </dubbo:method>
     </dubbo:service>
+
+
+    <!--心跳检测-->
+    <bean id="heartService" class="com.wade.dubbo.provider.heart.HeartServiceImpl"/>
+    <dubbo:service interface="com.wade.dubbo.demo.heart.HeartService" registry="N/A" ref="heartService"
+                   protocol="dubbo">
+        <dubbo:parameter key="heartbeat" value="3000"/>
+    </dubbo:service>
 </beans>
