@@ -79,4 +79,7 @@
     <dubbo:reference interface="com.wade.dubbo.demo.DubboService" id="dubboService" timeout="150000" retries="4"
                      async="true" protocol="dubbo" loadbalance="random" version="5.0.0">
     </dubbo:reference>
+
+    <!--callback-->
+    <dubbo:reference interface="com.wade.dubbo.demo.callback.CallbackService" id="callbackService"/>
 </beans>

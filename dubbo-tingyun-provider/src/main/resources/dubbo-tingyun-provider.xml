@@ -87,4 +87,14 @@
             <dubbo:argument index="0"/>
         </dubbo:method>
     </dubbo:service>
+
+    <!--callback基于dubbo-->
+    <bean id="callbackBean" class="com.wade.dubbo.provider.callback.CallbackServiceImpl"/>
+    <dubbo:service interface="com.wade.dubbo.demo.callback.CallbackService" ref="callbackBean" id="callbackService"
+                   connections="1" callbacks="1000" protocol="dubbo">
+        <dubbo:method name="addListener">
+            <dubbo:argument index="1" callback="true"/>
+            <!--<dubbo:argument type="com.demo.CallbackListener" callback="true" />-->
+        </dubbo:method>
+    </dubbo:service>
 </beans>
