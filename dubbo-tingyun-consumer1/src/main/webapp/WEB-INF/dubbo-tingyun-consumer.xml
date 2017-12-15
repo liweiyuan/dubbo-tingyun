@@ -44,7 +44,7 @@
     <dubbo:reference id="demoService" version="0.0.0" interface="com.wade.dubbo.demo.DemoService" timeout="150000"
                      loadbalance="roundrobin" protocol="dubbo" retries="4" check="true"
                      async="true"/>  <!--cache 缓存设置 cache="lru"(测试先取消)  protocol="dubbo"  client="netty"-->
-    <dubbo:annotation package="com.wade.consumer.service"/>
+    <dubbo:annotation package="com.wade.consumer"/>
 
     <dubbo:reference id="thriftService" interface="com.wade.dubbo.service.thrift.Demo$Iface" timeout="1000000"
                      protocol="thrift" cache="lru"/>
