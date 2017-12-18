@@ -5,7 +5,7 @@ package com.wade.dubbo.demo;
  */
 public interface DemoService {
 
-    public String sayHello(String name);
+    public String sayHello(String name) throws InterruptedException;
 
     public String getName(String name);
 }

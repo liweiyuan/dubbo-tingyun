@@ -9,7 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class ConsumerMain {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ApplicationContext ctx=new ClassPathXmlApplicationContext("dubbo-tingyun-consumer.xml");
         //DemoService demoService= (DemoService) ctx.getBean("demoService");
 

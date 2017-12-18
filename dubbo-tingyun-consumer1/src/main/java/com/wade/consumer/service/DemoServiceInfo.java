@@ -16,7 +16,7 @@ public class DemoServiceInfo {
     @Autowired
     DemoService demoService;
 
-    public String sayHello(){
+    public String sayHello() throws InterruptedException {
         //隐式传参数
         RpcContext.getContext().setAttachment("parameter",Thread.currentThread().getName());
         //String rsult=RpcContext.getContext().getUrl().getProtocol();
