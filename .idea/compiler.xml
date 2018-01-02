@@ -9,6 +9,7 @@
         <module name="dubbo-tingyun-api" />
         <module name="dubbo-tingyun-consumer1" />
         <module name="dubbo-tingyun-provider" />
+        <module name="dubbo-tingyun-provider1" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
@@ -17,6 +18,7 @@
       <module name="dubbo-tingyun-consumer" target="1.8" />
       <module name="dubbo-tingyun-consumer1" target="1.6" />
       <module name="dubbo-tingyun-provider" target="1.6" />
+      <module name="dubbo-tingyun-provider1" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

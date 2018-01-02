@@ -7,6 +7,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/dubbo-tingyun-consumer" />
     <file type="web" url="file://$PROJECT_DIR$/dubbo-tingyun-consumer1" />
+    <file type="web" url="file://$PROJECT_DIR$/dubbo-tingyun-provider1" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">

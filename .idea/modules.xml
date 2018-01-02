@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/dubbo-tingyun-api/dubbo-tingyun-api.iml" filepath="$PROJECT_DIR$/dubbo-tingyun-api/dubbo-tingyun-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/dubbo-tingyun-consumer1/dubbo-tingyun-consumer1.iml" filepath="$PROJECT_DIR$/dubbo-tingyun-consumer1/dubbo-tingyun-consumer1.iml" />
       <module fileurl="file://$PROJECT_DIR$/dubbo-tingyun-provider/dubbo-tingyun-provider.iml" filepath="$PROJECT_DIR$/dubbo-tingyun-provider/dubbo-tingyun-provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo-tingyun-provider1/dubbo-tingyun-provider1.iml" filepath="$PROJECT_DIR$/dubbo-tingyun-provider1/dubbo-tingyun-provider1.iml" />
     </modules>
   </component>
 </project>
