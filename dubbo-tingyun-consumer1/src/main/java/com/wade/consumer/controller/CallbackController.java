@@ -16,10 +16,15 @@ public class CallbackController {
     private CallbackService callbackService;
 
     @RequestMapping("/callback")
-    public void getResult() {
+    public void getResult() throws InterruptedException {
         callbackService.addListener("foo.bar", new CallbackListener() {
             @Override
             public void changed(String msg) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 System.err.println("callback1:" + msg);
             }
         });

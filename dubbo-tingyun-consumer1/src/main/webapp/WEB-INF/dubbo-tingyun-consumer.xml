@@ -17,8 +17,8 @@
     <!--生成远程服务代理，可以和本地bean一样使用demoService-->
     <!--使用的是dubbo的协议-->
     <dubbo:protocol id="protocol" name="dubbo" port="20880" dispatcher="execution" threads="200"
-                    threadpool="limited" server="mina" client="mina"
-                    transporter="mina"/><!--bug（5129） 默认的server为netty-->
+                    threadpool="limited" server="netty" client="netty"
+                    transporter="netty"/><!--bug（5129） 默认的server为netty-->
     <!--<dubbo:protocol name="dubbo" port="20880" />-->
     <!--使用hessian作为协议传输-->
     <!--<dubbo:protocol name="hessian" port="8083" server="jetty"/>-->
@@ -81,7 +81,7 @@
     </dubbo:reference>
 
     <!--callback-->
-    <dubbo:reference interface="com.wade.dubbo.demo.callback.CallbackService" id="callbackService" protocol="dubbo"/>
+    <dubbo:reference interface="com.wade.dubbo.demo.callback.CallbackService" id="callbackService"/>
 
     <dubbo:reference id="heartService" interface="com.wade.dubbo.demo.heart.HeartService" url="dubbo://127.0.0.1:20880">
         <dubbo:parameter key="heartbeat" value="3000"/>

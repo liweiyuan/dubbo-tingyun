@@ -5,5 +5,5 @@ package com.wade.dubbo.demo.callback;
  */
 public interface CallbackListener {
     
-    void changed(String msg);
+    void changed(String msg) throws InterruptedException;
 }

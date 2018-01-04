@@ -18,8 +18,8 @@
     <!--用dubbo协议在20880端口暴露服务-->
     <!--使用的是dubbo的协议-->
     <dubbo:protocol id="protocol" name="dubbo" port="20880" dispatcher="execution" threads="200"
-                    threadpool="limited" server="mina" client="mina"
-                    transporter="mina"/><!--bug（5129） 默认的server为netty-->
+                    threadpool="limited" server="netty" client="netty"
+                    transporter="netty"/><!--bug（5129） 默认的server为netty-->
     <!--<dubbo:protocol name="dubbo" port="20880" />-->
     <!--sample-->
     <!-- <dubbo:protocol name="dubbo" port="9090" server="netty" client="netty" codec="dubbo" serialization="hessian2"
@@ -91,7 +91,7 @@
     <!--callback基于dubbo-->
     <bean id="callbackBean" class="com.wade.dubbo.provider.callback.CallbackServiceImpl"/>
     <dubbo:service interface="com.wade.dubbo.demo.callback.CallbackService" ref="callbackBean" id="callbackService"
-                   connections="1" callbacks="1000" protocol="dubbo">
+                   connections="1" callbacks="1000">
         <dubbo:method name="addListener">
             <dubbo:argument index="1" callback="true"/>
             <!--<dubbo:argument type="com.demo.CallbackListener" callback="true" />-->

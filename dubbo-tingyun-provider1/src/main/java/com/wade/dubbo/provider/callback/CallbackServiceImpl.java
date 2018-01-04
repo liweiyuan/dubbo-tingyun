@@ -16,7 +16,7 @@ public class CallbackServiceImpl implements CallbackService {
     private final Map<String, CallbackListener> listeners = new ConcurrentHashMap<String, CallbackListener>();
 
     @Override
-    public void addListener(String key, CallbackListener listener) {
+    public void addListener(String key, CallbackListener listener) throws InterruptedException {
         listeners.put(key, listener);
         listener.changed(getChanged(key)); // 发送变更通知
     }
