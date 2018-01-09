@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+
+    <!--消费方应用名-->
+    <dubbo:application name="dubbo-consumer"/>
+    <!-- 使用multicast广播注册中心暴露发现服务地址 -->
+    <!--<dubbo:registry address="multicast://224.5.6.7:1234"/>-->
+    <!-- 使用zookeeper注册中心暴露服务地址 -->
+    <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181"/><!--transport表示传输协议-->
+    <!--生成远程服务代理，可以和本地bean一样使用demoService-->
+    <!--使用的是dubbo的协议-->
+    <dubbo:protocol id="protocol" name="dubbo" port="20880" dispatcher="execution" threads="200"
+                    threadpool="limited" server="grizzly" client="grizzly"
+                    transporter="grizzly"/><!--bug（5129） 默认的server为netty-->
+    <!--<dubbo:protocol name="dubbo" port="20880" />-->
+    <!--使用hessian作为协议传输-->
+    <!--<dubbo:protocol name="hessian" port="8083" server="jetty"/>-->
+    <!--使用rmi作为协议-->
+    <!-- <dubbo:protocol name="rmi" port="1099"/>-->
+    <!--启用默认的协议-->
+    <!--<dubbo:provider protocol="rmi"/>-->
+    <!--配置为http协议-->
+    <!--<dubbo:protocol name="http"/>-->
+    <!--配置WebService协议-->
+    <!--<dubbo:protocol name="webservice" port="8050" server="jetty"/>-->
+    <!--启用默认的协议-->
+    <!--<dubbo:provider protocol="webservice"/>-->
+    <!--配置thrift协议-->
+    <dubbo:protocol name="thrift"/>
+    <!--基于  memcached协议-->
+    <!--<dubbo:reference id="demoService" interface="com.wade.dubbo.demo.DemoService" url="memcached://10.128.0.40:11211" p:get="sayHello"/>-->
+    <!--基于redis的协议-->
+    <!--<dubbo:reference id="demoService" interface="com.wade.dubbo.demo.DemoService" url="redis://10.128.0.40:6369"
+                     p:get="sayHello"/>--><!--p:set="putFoo" p:get="getFoo" p:delete="removeFoo"-->
+
+
+    <dubbo:reference id="demoService" version="0.0.0" interface="com.wade.dubbo.demo.DemoService" timeout="150000"
+                     loadbalance="roundrobin" protocol="dubbo" retries="4" check="true"
+                     async="true"/>  <!--cache 缓存设置 cache="lru"(测试先取消)  protocol="dubbo"  client="netty"-->
+    <dubbo:annotation package="com.wade.consumer"/>
+
+    <dubbo:reference id="thriftService" interface="com.wade.dubbo.service.thrift.Demo$Iface" timeout="1000000"
+                     protocol="thrift" cache="lru"/>
+
+    <!--基于http协议-->
+    <!--配置为http协议-->
+    <dubbo:protocol name="http"/>
+    <dubbo:reference id="helloService" interface="com.wade.dubbo.demo.HelloService" version="1.0.0" timeout="150000"
+                     loadbalance="leastactive" protocol="http" retries="4" check="true" async="true"/>
+    <!--配置WebService协议-->
+    <dubbo:protocol name="webservice" port="8050" server="jetty"/>
+    <dubbo:reference id="webService" interface="com.wade.dubbo.demo.CxfService" version="2.0.0" timeout="150000"
+                     loadbalance="random" protocol="webservice" retries="4" check="true" async="true"/>
+
+    <!--配置hessian协议-->
+    <dubbo:reference interface="com.wade.dubbo.demo.HessianService" id="hessianService" version="3.0.0"
+                     timeout="150000" loadbalance="random" protocol="hessian" async="true"/>
+
+    <!--配置rmi协议-->
+    <dubbo:reference interface="com.wade.dubbo.demo.RmiService" id="rmiService" version="4.0.0" timeout="150000"
+                     async="false" loadbalance="random" protocol="rmi"/>
+
+
+    <!--基于  memcached协议-->
+    <!--<dubbo:reference id="memcachedService" interface="com.wade.dubbo.demo.MemcachedService"
+                     url="memcached://10.128.0.40:11211"  p:set="setNumber"/>-->
+    <!--基于redis的协议-->
+    <!-- <dubbo:reference id="redisService" interface="com.wade.dubbo.demo.RedisService" url="redis://10.128.0.40:6369"
+                      p:set="setNumber"/>--><!--p:set="putFoo" p:get="getFoo" p:delete="removeFoo"-->
+
+    <!--配置method参数-->
+    <dubbo:reference interface="com.wade.dubbo.demo.DubboService" id="dubboService" timeout="150000" retries="4"
+                     async="true" protocol="dubbo" loadbalance="random" version="5.0.0">
+    </dubbo:reference>
+
+    <!--callback-->
+    <dubbo:reference interface="com.wade.dubbo.demo.callback.CallbackService" id="callbackService" protocol="dubbo" check="false"/>
+
+    <dubbo:reference id="heartService" interface="com.wade.dubbo.demo.heart.HeartService" url="dubbo://127.0.0.1:20880">
+        <dubbo:parameter key="heartbeat" value="3000"/>
+    </dubbo:reference>
+</beans>
